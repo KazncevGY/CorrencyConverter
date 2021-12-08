@@ -6,9 +6,42 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Title" Grid.Row="0" Background="LightGray" Height="40" Width="Auto" VerticalAlignment="Top">
+            <TextBlock x:Name="TitleText" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Конвертер валют" FontSize="20" />
+        </Grid>
+        <Grid x:Name="Content" Grid.Row="1" Margin="50,0,50,0">
+            <ProgressRing VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="LoadProcess" IsActive="True" Height="10" Width="10"/>
+            <Grid x:Name="Convert"  Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" x:Name="FirstAmount" Text="0" HorizontalAlignment="Right" TextAlignment="Right" BorderThickness="0"/>
+                <Image Source="/Assets/Arrow.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" />
+                <TextBox Grid.Row="0" Grid.Column="2" x:Name="SecondAmount" Text="0" HorizontalAlignment="Left" BorderThickness="0"/>
+                <TextBox Grid.Row="1" Grid.Column="0" x:Name="FirstCurrency" Text="0" HorizontalAlignment="Right" TextAlignment="Right" BorderThickness="0"/>
+                <TextBox Grid.Row="1" Grid.Column="2" x:Name="SecondCurrency" Text="0" HorizontalAlignment="Left" BorderThickness="0"/>
+                <TextBlock x:Name="ChangeFirst"  Grid.Row="2" Grid.Column="0" Text="Изменить &#10; валюту" Tapped="ChangeFirst_Tapped" FocusVisualPrimaryBrush="Blue" Foreground="Blue"  />
+                <TextBlock x:Name="ChangeSecond" Grid.Row="2" Grid.Column="2" Text="Изменить &#10; валюту" FocusVisualPrimaryBrush="Blue" Foreground="Blue" Tapped="ChangeSecond_Tapped" />
+            </Grid>
+        </Grid>
+        
+       
     </Grid>
+
+
 </Page>
