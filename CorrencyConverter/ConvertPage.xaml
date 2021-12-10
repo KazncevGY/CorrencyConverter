@@ -13,11 +13,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid x:Name="Title" Grid.Row="0" Background="LightGray" Height="40" Width="Auto" VerticalAlignment="Top">
-            <TextBlock x:Name="TitleText" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Конвертер валют" FontSize="20" />
+        <Grid Grid.Row="0" Background="LightGray" Height="40" Width="Auto" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Конвертер валют" FontSize="20" />
         </Grid>
-        <Grid x:Name="Content" Grid.Row="1" Margin="50,0,50,0">
-            <Grid x:Name="Convert"  Visibility="Visible">
+        <Grid Grid.Row="1" Margin="50,0,50,0">
+            <Grid  Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -30,7 +30,9 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Row="0" Grid.Column="0" x:Name="LeftAmount" HorizontalAlignment="Right" TextAlignment="Right" BorderThickness="0" TextChanged="LeftAmount_TextChanged"/>
-                <Image Source="/Assets/Arrow.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" />
+                <Grid x:Name="ArrowBox" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" >
+                    <Image Height="25" Width="125" x:Name="Arrow" Source="/Assets/Arrow.png" Stretch="Fill"/>
+                </Grid>
                 <TextBox Grid.Row="0" Grid.Column="2" x:Name="RightAmount" HorizontalAlignment="Left" BorderThickness="0" TextChanged="RightAmount_TextChanged"/>
                 <TextBox Grid.Row="1" Grid.Column="0" x:Name="LeftCurrency"  HorizontalAlignment="Right" TextAlignment="Right" BorderThickness="0"/>
                 <TextBox Grid.Row="1" Grid.Column="2" x:Name="RightCurrency" HorizontalAlignment="Left" BorderThickness="0"/>

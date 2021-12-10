@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="CorrencyConverter.BlankPage1"
+    x:Class="CorrencyConverter.CurrencySelection"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CorrencyConverter"
@@ -16,7 +16,7 @@
         <Grid x:Name="Title" Grid.Row="0" Background="LightGray" Height="40" Width="Auto" VerticalAlignment="Top">
             <TextBlock x:Name="TitleText" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Выбор валюты" FontSize="20" />
         </Grid>
-        <ListView Background="LightGray" Height="Auto" VerticalAlignment="Top" x:Name="CurrencySelection" Grid.Row="1" SelectionMode="Single" ScrollViewer.IsVerticalRailEnabled="True" SelectionChanged="CurrencySelection_SelectionChanged">
+        <ListView Background="LightGray" Height="Auto" VerticalAlignment="Top" x:Name="CurrencyList" Grid.Row="1" SelectionMode="Single" ScrollViewer.IsVerticalRailEnabled="True" SelectionChanged="CurrencyList_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate  x:DataType="local:Currency">
                     <Grid>

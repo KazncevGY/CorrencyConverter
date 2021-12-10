@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -30,7 +31,7 @@ namespace CorrencyConverter
         public ConvertPage()
         {
             this.InitializeComponent();
-
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,18 +50,17 @@ namespace CorrencyConverter
                 RightAmount.Text = App.rightAmount.ToString();
                 RightToLeftConvertion();
             }
-        }
-
-        
+            
+        }        
 
         private void ChangeLeft_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(BlankPage1), "left");
+            this.Frame.Navigate(typeof(CurrencySelection), "left");
         }
 
         private void ChangeRight_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(BlankPage1), "right");
+            this.Frame.Navigate(typeof(CurrencySelection), "right");
         }
 
         private void LeftAmount_TextChanged(object sender, TextChangedEventArgs e)
@@ -88,7 +88,6 @@ namespace CorrencyConverter
             }
         }
 
-
         private void LeftToRightConvertion()
         {
             try
@@ -102,7 +101,6 @@ namespace CorrencyConverter
                 RightAmount.Text = "0";
             }
         }
-
 
         private void RightToLeftConvertion()
         {

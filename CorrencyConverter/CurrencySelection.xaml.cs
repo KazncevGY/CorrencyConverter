@@ -20,14 +20,14 @@ namespace CorrencyConverter
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class CurrencySelection : Page
     {
         string selection;
 
-        public BlankPage1()
+        public CurrencySelection()
         {
             this.InitializeComponent();
-            CurrencySelection.ItemsSource = App.currency.Values;
+            CurrencyList.ItemsSource = App.currency.Values;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -42,12 +42,11 @@ namespace CorrencyConverter
             {
                 selected = App.rightCurrency;
             }
-            foreach (Currency c in CurrencySelection.Items)
+            foreach (Currency c in CurrencyList.Items)
             {
                 if (c == selected)
                 {
                     c.isSelected = true;
-                    //CurrencySelection.SelectedItem = CurrencySelection.ContainerFromItem(c);
                 }
                 else
                 {
@@ -57,7 +56,7 @@ namespace CorrencyConverter
             
         }
 
-        private void CurrencySelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CurrencyList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (selection.Equals("left"))
             {
