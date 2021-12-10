@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="CorrencyConverter.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CorrencyConverter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Title" Grid.Row="0" Background="LightGray" Height="40" Width="Auto" VerticalAlignment="Top">
+            <TextBlock x:Name="TitleText" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Выбор валюты" FontSize="20" />
+        </Grid>
+        <ListView Background="LightGray" Height="Auto" VerticalAlignment="Top" x:Name="CurrencySelection" Grid.Row="1" SelectionMode="Single" ScrollViewer.IsVerticalRailEnabled="True" SelectionChanged="CurrencySelection_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate  x:DataType="local:Currency">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="{Binding name}"/>
+                        <TextBlock Grid.Column="1"  HorizontalAlignment="Right" Text="{Binding code}"/>
+                        <SymbolIcon Grid.Column="2" Visibility="{x:Bind isSelected, Mode=OneWay}" HorizontalAlignment="Right" Symbol="Accept"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+    </Grid>
+</Page>

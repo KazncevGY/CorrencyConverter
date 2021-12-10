@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,15 @@ namespace CorrencyConverter
     /// </summary>
     sealed partial class App : Application
     {
-       // Hashtable currency
+
+
+        static internal Dictionary<string, Currency> currency;
+
+        static internal Currency leftCurrency;
+        static internal Currency rightCurrency;
+
+        static internal decimal leftAmount;
+        static internal decimal rightAmount;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -33,6 +42,16 @@ namespace CorrencyConverter
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            currency = new Dictionary<string, Currency>();
+            JObject rub = new JObject();
+            currency.Add("RUB", new Currency("Российский рубль", "RUB", 1));
+
+            //initialisation of converter
+            leftCurrency = currency["RUB"];
+            rightCurrency = currency["RUB"];
+            leftAmount = 0;
+            rightAmount = 0;
+
         }
 
         /// <summary>
@@ -69,7 +88,8 @@ namespace CorrencyConverter
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(LoadPage), "https://www.cbr-xml-daily.ru/daily_json.js");
+
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
